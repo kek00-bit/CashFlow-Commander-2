@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CashFlow Commander</title>
+
+<!-- Link CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Chart.js for graphs -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- jsPDF for PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+<header>
+<h1>CashFlow Commander</h1>
+<p>Manage bills, recurring payments, and finances smartly</p>
+</header>
+
+<div class="container">
+
+<!-- Dashboard Cards -->
+<div class="card-container">
+<div class="card"><h3>Total Bills</h3><p id="billCount">0</p></div>
+<div class="card"><h3>Total Amount</h3><p id="totalAmount">$0</p></div>
+<div class="card"><h3>Next Due</h3><p id="nextDue">None</p></div>
+</div>
+
+<!-- Add / Edit Bill Form -->
+<div class="form-card">
+<h2>Add / Edit Bill</h2>
+<input id="name" placeholder="Bill Name">
+<input id="amount" type="number" placeholder="Amount">
+<input id="date" type="date">
+<select id="category">
+<option value="ESSENTIAL">Essential</option>
+<option value="DEBT">Debt</option>
+<option value="BNPL">BNPL</option>
+<option value="INCOME">Income</option>
+<option value="MISC">Misc</option>
+</select>
+<select id="recurring">
+<option value="none">No Recurring</option>
+<option value="weekly">Weekly</option>
+<option value="biweekly">Biweekly</option>
+<option value="monthly">Monthly</option>
+<option value="yearly">Yearly</option>
+</select>
+<textarea id="notes" placeholder="Notes"></textarea>
+<button onclick="addBill()">Add / Save Bill</button>
+</div>
+
+<!-- Bills Table -->
+<h2>Bills</h2>
+<table>
+<thead>
+<tr><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Recurring</th><th>Actions</th></tr>
+</thead>
+<tbody id="billList"></tbody>
+</table>
+
+<!-- Charts -->
+<h2>Charts</h2>
+<canvas id="categoryChart"></canvas>
+<canvas id="cashFlowChart" style="margin-top:20px;"></canvas>
+
+<!-- Calendar -->
+<h2>Yearly Calendar</h2>
+<div class="calendar" id="calendar"></div>
+
+<!-- AI Suggestions -->
+<h2>AI Suggestions</h2>
+<div class="ai-panel" id="aiPanel"></div>
+
+<!-- PDF Export -->
+<button onclick="exportPDF()">Export PDF</button>
+
+</div>
+
+<!-- Link JS -->
+<script src="app.js"></script>
+</body>
+</html>
